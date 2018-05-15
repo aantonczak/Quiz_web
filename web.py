@@ -1,29 +1,12 @@
 from flask import Flask
 from flask import render_template, request, redirect, url_for, flash
-
+import zBazy
 app = Flask(__name__)
 app.config.update(dict(SECRET_KEY = "haslo"))
 
 
 
-PYTANIA = [
-    {
-        'pytanie': u'Stolica Hiszpani, to:',  # pytanie
-        'odpowiedzi': [u'Madryt', u'Warszawa', u'Barcelona'],  # możliwe odpowiedzi
-        'odpok': u'Madryt',  # poprawna odpowiedź
-    },
-    {
-        'pytanie': u'Objętość sześcianu o boku 6 cm, wynosi:',
-        'odpowiedzi': [u'36', u'216', u'18'],
-        'odpok': u'216',
-    },
-    {
-        'pytanie': u'Symbol pierwiastka Helu, to:',
-        'odpowiedzi': [u'Fe', u'H', u'He'],
-        'odpok': u'He',
-    }
-]
-
+PYTANIA = zBazy.baza()
 
 
 @app.route('/', methods=["GET","POST"])
